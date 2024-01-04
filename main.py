@@ -13,7 +13,9 @@ while True:
     df_t2 = df_master.loc[df_master['teamID'] == team2]
 
     df_both = pd.merge(df_t1, df_t2, on='playerID')
+    df_both = df_both.sort_values("G_all_x", ascending=True)
+    print(df_both.to_string())
 
-    player = df_both["playerID"].iloc[-1]
-    # print(player)
+    player = df_both["playerID"].iloc[0]
+    print(player)
     print(playerid_reverse_lookup([player], key_type='bbref')["name_first"] + " " + playerid_reverse_lookup([player], key_type='bbref')["name_last"])
